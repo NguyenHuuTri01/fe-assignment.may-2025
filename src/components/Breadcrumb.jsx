@@ -12,23 +12,24 @@ const Breadcrumb = () => {
     };
 
     return (
-        <nav className="flex bg-gray-100 text-gray-700 rounded-md" aria-label="Breadcrumb">
+        <nav className="flex text-[#7C7C7C] pl-2" aria-label="Breadcrumb">
             <ol className="inline-flex items-center space-x-1 md:space-x-2">
                 {pathnames.map((name, index) => {
                     const routeTo = `/${pathnames.slice(0, index + 1).join("/")}`;
                     const isLast = index === pathnames.length - 1;
                     const displayName = capitalize(name);
                     return (
-                        <li key={routeTo} className="inline-flex items-center">
+                        <li key={routeTo} className="inline-flex items-center font-[500]">
                             {index > 0 && <span className="mx-1 text-gray-400">{">"}</span>}
                             {isLast ? (
-                                <span className="text-gray-600 text-[14px] font-medium">{displayName}</span>
+                                <span className="text-[#005B86] text-[14px]">{displayName}</span>
                             ) : (
                                 <Link
                                     to={routeTo}
                                     state={{
                                         path: routeTo,
-                                        id: location.state?.id
+                                        id: location.state?.id,
+                                        name: location.name ? location.name : ""
                                     }}
                                     className="text-gray-600 hover:text-gray-900 text-[14px]"
                                 >

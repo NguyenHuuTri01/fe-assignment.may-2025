@@ -13,6 +13,7 @@ import Projects from "./pages/Projects/Projects";
 import AdminLayout from "./components/AdminLayout";
 import ProjectDetail from "./pages/Projects/ProjectDetail";
 import ProjectSubDetail from "./pages/Projects/ProjectSubDetail";
+import Packages from "./pages/Estimator/Packages";
 
 function App() {
   const [contentKey, setContentKey] = useState("overview");
@@ -31,7 +32,7 @@ function App() {
               <Sidebar onSelectContent={onSelectContent} />
               <div className="flex-1 flex flex-col ml-[22px]">
                 <Header contentKey={contentKey} />
-                <div className="flex-1 p-4 overflow-auto bg-gray-50">
+                <div className="flex-1 py-4 overflow-auto bg-gray-50">
                   <Outlet />
                 </div>
               </div>
@@ -41,7 +42,9 @@ function App() {
           <Route index element={<Navigate to="/overview" replace />} />
           <Route path="overview" element={<Overview />} />
           <Route path="inquiries" element={<Inquiries />} />
-          <Route path="estimator" element={<Estimator />} />
+          <Route path="estimator" element={<Estimator />} >
+            <Route path=":pkgId" element={<Packages />} />
+          </Route>
           <Route path="projects" element={<Projects />}>
             <Route path=":projectId" element={<ProjectDetail />}>
               <Route path=":detailId" element={<ProjectSubDetail />} />

@@ -19,7 +19,7 @@ const ProjectDetail = () => {
     ];
 
     return (
-        <div className="p-6">
+        <div className="">
             {location.pathname == stateValue?.path && shouldShowTiles && (
                 <div className="grid grid-cols-2 gap-6">
                     {tiles.map((tile) => (

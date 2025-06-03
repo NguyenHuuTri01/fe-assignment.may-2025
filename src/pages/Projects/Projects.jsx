@@ -16,7 +16,7 @@ function Projects() {
     const shouldShowTiles = pathnames.length === 1;
 
     return (
-        <div className="p-6">
+        <div className="">
             {shouldShowTiles && (
                 <div className="grid grid-cols-2 gap-6">
                     {tiles.map((tile) => (
