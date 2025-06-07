@@ -1,8 +1,15 @@
-import { configureStore } from '@reduxjs/toolkit'
-import moviceReducer from './reducers/moviceSlice'
+import { configureStore } from '@reduxjs/toolkit';
+import locationReducer from './reducers/locationSlice';
+import formReducer from './reducers/formSlice';
+import inquiriesReducer from './reducers/tableSlice';
+
 
 export const store = configureStore({
     reducer: {
-        movies: moviceReducer
+        location: locationReducer,
+        form: formReducer,
+        inquiries: inquiriesReducer,
     },
 })
+
+export default store;
