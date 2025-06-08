@@ -106,43 +106,46 @@ function Inquiries() {
                 <table className="border border-gray-300">
                     <thead>
                         <tr className="bg-gray-100">
-                            {headers.map((key) => (
-                                <th
-                                    key={key}
-                                    onClick={() => handleSort(key)}
-                                    className="cursor-pointer text-[14px] px-2 py-2 border border-gray-300 text-left"
-                                >
-                                    <div className='flex'>
-                                        {key}
-                                        {sortBy === key ? (sortOrder === 'asc' ? <ChevronUp size={20} /> : <ChevronDown size={20} />) : ''}
-                                    </div>
-                                </th>
-                            ))}
+                            {headers && headers.length > 0 &&
+                                headers.map((key) => (
+                                    <th
+                                        key={key}
+                                        onClick={() => handleSort(key)}
+                                        className="cursor-pointer text-[14px] px-2 py-2 border border-gray-300 text-left"
+                                    >
+                                        <div className='flex'>
+                                            {key}
+                                            {sortBy === key ? (sortOrder === 'asc' ? <ChevronUp size={20} /> : <ChevronDown size={20} />) : ''}
+                                        </div>
+                                    </th>
+                                ))}
                         </tr>
                         <tr>
-                            {headers.map((key) => (
-                                <th key={key} className="px-2 py-1 border border-gray-300">
-                                    <input
-                                        type="text"
-                                        placeholder="Lọc..."
-                                        className="w-full px-1 py-0.5 border rounded text-sm"
-                                        value={filters[key] || ''}
-                                        onChange={(e) => handleFilterChange(key, e.target.value)}
-                                    />
-                                </th>
-                            ))}
+                            {headers && headers.length > 0 &&
+                                headers.map((key) => (
+                                    <th key={key} className="px-2 py-1 border border-gray-300">
+                                        <input
+                                            type="text"
+                                            placeholder="Lọc..."
+                                            className="w-full px-1 py-0.5 border rounded text-sm"
+                                            value={filters[key] || ''}
+                                            onChange={(e) => handleFilterChange(key, e.target.value)}
+                                        />
+                                    </th>
+                                ))}
                         </tr>
                     </thead>
                     <tbody>
-                        {currentPageData.map((row, idx) => (
-                            <tr key={idx} className="hover:bg-gray-50">
-                                {headers.map((key) => (
-                                    <td key={key} className="px-4 py-2 border border-gray-200 text-sm">
-                                        {row[key]}
-                                    </td>
-                                ))}
-                            </tr>
-                        ))}
+                        {currentPageData && currentPageData.length > 0 &&
+                            currentPageData.map((row, idx) => (
+                                <tr key={idx} className="hover:bg-gray-50">
+                                    {headers.map((key) => (
+                                        <td key={key} className="px-4 py-2 border border-gray-200 text-sm">
+                                            {row[key]}
+                                        </td>
+                                    ))}
+                                </tr>
+                            ))}
                     </tbody>
                 </table>
             </div>
